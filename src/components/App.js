@@ -3,6 +3,8 @@ import '../styles/App.css';
 
 import BaseLayout from './BaseLayout.js';
 import Appetizers from './Appetizers.js';
+import Entrees from './Entrees.js';
+import Desserts from './Desserts.js';
 
 
 class App extends Component {
@@ -30,6 +32,12 @@ class App extends Component {
     console.log('log2', this.state.menuItems);
     let appetizers = this.state.menuItems.Appetizers.map((appetizer) => {
       return <Appetizers key={appetizer.dish} appetizer={appetizer}/>
+    });
+    let entrees = this.state.menuItems.Entrees.map((entree) => {
+      return <Entrees key={entree.dish} entree={entree}/>
+    });
+    let desserts = this.state.menuItems.Desserts.map((dessert) => {
+      return <Desserts key={dessert.dish} dessert={dessert}/>
     })
     return (
       <div className="App">
@@ -37,6 +45,8 @@ class App extends Component {
         <BaseLayout>
         </BaseLayout>
         {appetizers}
+        {entrees}
+        {desserts}
 
 
       </div>

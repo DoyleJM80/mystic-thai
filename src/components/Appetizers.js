@@ -7,8 +7,10 @@ export default class Appetizers extends Component {
   render() {
     let appetizer = this.props.appetizer;
     return(
-      <div>
-        <h3>dish: {appetizer.dish}</h3>
+      <div className="card">
+        <h2>Dish: {appetizer.dish}</h2>
+        <p>Description: {appetizer.description}</p>
+        <h3>Price: {appetizer.price}</h3>
       </div>
     )
   }
