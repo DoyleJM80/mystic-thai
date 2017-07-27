@@ -14,13 +14,14 @@ class App extends Component {
         Desserts: [],
         Entrees: []
       },
-      category: []
+      category: 'Appetizers',
+      missionStatement: true
     };
     this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleSelect(event) {
-    this.setState({category: this.state.menuItems[event.target.value]})
+    this.setState({ category: event.target.value, missionStatement: false })
   }
 
   componentDidMount() {
@@ -34,7 +35,7 @@ class App extends Component {
 
   render() {
     console.log('log2', this.state.menuItems);
-    let categories = this.state.category.map((category) => {
+    let categories = this.state.menuItems[this.state.category].map((category) => {
       return <Categories key={category.dish} category={category}/>
     });
 
@@ -49,7 +50,7 @@ class App extends Component {
             <input value="Entrees" type="button" onClick={this.handleSelect} />
             <input value="Desserts" type="button" onClick={this.handleSelect} />
           </div>
-          {categories}
+          <h1 className="mission-statement">{ this.state.missionStatement ? missionStatement : categories }</h1>
         </div>
       </div>
     );
