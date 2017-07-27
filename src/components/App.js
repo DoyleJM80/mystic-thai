@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 
 import BaseLayout from './BaseLayout.js';
-import Appetizers from './Appetizers.js';
-import Entrees from './Entrees.js';
-import Desserts from './Desserts.js';
-
+import Categories from './Categories.js';
 
 class App extends Component {
   constructor(props) {
@@ -15,8 +12,14 @@ class App extends Component {
         Appetizers: [],
         Desserts: [],
         Entrees: []
-      }
+      },
+      category: []
     };
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect(event) {
+    this.setState({category: this.state.menuItems[event.target.value]})
   }
 
   componentDidMount() {
@@ -30,24 +33,19 @@ class App extends Component {
 
   render() {
     console.log('log2', this.state.menuItems);
-    let appetizers = this.state.menuItems.Appetizers.map((appetizer) => {
-      return <Appetizers key={appetizer.dish} appetizer={appetizer}/>
+    let categories = this.state.category.map((category) => {
+      return <Categories key={category.dish} category={category}/>
     });
-    let entrees = this.state.menuItems.Entrees.map((entree) => {
-      return <Entrees key={entree.dish} entree={entree}/>
-    });
-    let desserts = this.state.menuItems.Desserts.map((dessert) => {
-      return <Desserts key={dessert.dish} dessert={dessert}/>
-    })
+
     return (
       <div className="App">
 
         <BaseLayout>
         </BaseLayout>
-        {appetizers}
-        {entrees}
-        {desserts}
-
+        <input value="Appetizers" type="button" onClick={this.handleSelect} />
+        <input value="Entrees" type="button" onClick={this.handleSelect} />
+        <input value="Desserts" type="button" onClick={this.handleSelect} />
+        {categories}
 
       </div>
     );
