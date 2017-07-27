@@ -8,8 +8,8 @@ export default class Categories extends Component {
     let category = this.props.category;
     return(
       <div className="item">
-        <h2>Dish: {category.dish}</h2>
-        <p>Description: {category.description}</p>
+        <h2>{category.dish}</h2>
+        <p>{category.description}</p>
         <h3>Price: {category.price}</h3>
       </div>
     )

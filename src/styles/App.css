@@ -1,8 +1,63 @@
 body {
-  margin-top: 180px;
+  margin-top: 50px;
+  background-image: url('https://img.grouponcdn.com/iam/k1jM97iPN9xhz1xAJXG2/Wt-2048x1229/v1/c700x420.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.banner {
+  background-color: #fff;
+  text-align: center;
+  z-index: 1;
+  height: 80px;
+  width: 100%;
+  padding-top: 15px;
+}
+
+.img-container {
+  float: left;
+  display: inline-block;
+  height: 80px;
+  width: 60px;
+  background-image: url('http://mysticthaijamaica.com/wp-content/uploads/2016/08/mystic_logo_transparent.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -15px;
+}
+
+.banner a {
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  margin: 0 20px;
+  color: rgb(150, 150, 150);
+}
+
+.item-display {
+  background-color: rgba(123, 123, 123, 0.7);
+  min-height: 100vh;
+  width: 40vw;
+}
+
+.display-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.display-buttons input {
+  background-color: rgba(0, 0, 0, 0.0);
+  outline: none;
+  border: none;
+  font-size: 20px;
+  margin-top: 10px;
+  color: #fff;
 }
 
 .item {
   width: 500px;
   margin: 5px;
+  color: #fff;
+  margin-left: 50px;
 }

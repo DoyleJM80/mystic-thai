@@ -3,6 +3,7 @@ import '../styles/App.css';
 
 import BaseLayout from './BaseLayout.js';
 import Categories from './Categories.js';
+let missionStatement = 'Mystic Thai offers bold and authentic flavors of Thai food located in beautiful downtown Greenville.  Our talented, experienced chefs create authentic Thai entrees using fresh ingredients and traditional recipes.  Exotic sauces and flavors intermingle on your plate creating an exciting taste journey you can experience only in our restaurant.';
 
 class App extends Component {
   constructor(props) {
@@ -42,11 +43,14 @@ class App extends Component {
 
         <BaseLayout>
         </BaseLayout>
-        <input value="Appetizers" type="button" onClick={this.handleSelect} />
-        <input value="Entrees" type="button" onClick={this.handleSelect} />
-        <input value="Desserts" type="button" onClick={this.handleSelect} />
-        {categories}
-
+        <div className="item-display">
+          <div className="display-buttons">
+            <input value="Appetizers" type="button" onClick={this.handleSelect} />
+            <input value="Entrees" type="button" onClick={this.handleSelect} />
+            <input value="Desserts" type="button" onClick={this.handleSelect} />
+          </div>
+          {categories}
+        </div>
       </div>
     );
   }
