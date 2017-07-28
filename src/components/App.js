@@ -3,6 +3,7 @@ import '../styles/App.css';
 
 import BaseLayout from './BaseLayout.js';
 import Categories from './Categories.js';
+import Order from './Order.js';
 let missionStatement = 'Mystic Thai offers bold and authentic flavors of Thai food located in beautiful downtown Greenville.  Our talented, experienced chefs create authentic Thai entrees using fresh ingredients and traditional recipes.  Exotic sauces and flavors intermingle on your plate creating an exciting taste journey you can experience only in our restaurant.';
 
 class App extends Component {
@@ -36,13 +37,11 @@ class App extends Component {
   render() {
     console.log('log2', this.state.menuItems);
     let categories = this.state.menuItems[this.state.category].map((category) => {
-      return <Categories key={category.dish} category={category}/>
+      return (<Categories key={category.dish} category={category}/>,<Order key={category.dish} category={category}/>)
     });
 
     return (
       <div className="App">
-
-        
         <div className="item-display">
           <div className="display-buttons">
             <input value="Appetizers" type="button" onClick={this.handleSelect} />

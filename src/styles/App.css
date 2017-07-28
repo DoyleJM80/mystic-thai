@@ -30,7 +30,6 @@ body {
 .banner a {
   color: #000;
   font-size: 30px;
-  text-align: center;
   margin: 0 20px;
   color: rgb(150, 150, 150);
 }
@@ -93,4 +92,10 @@ body {
   color: rgb(150, 150, 150);
   font-size: 20px;
   margin-left: 10px;
+}
+
+.form-container, .contact-container {
+  min-height: 88vh;
+  width: 100vh;
+  padding-top: 100px;
 }
