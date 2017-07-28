@@ -35,15 +35,24 @@ body {
   color: rgb(150, 150, 150);
 }
 
+.place-order {
+  float: right;
+}
+
 .item-display {
   background-color: rgba(123, 123, 123, 0.7);
   min-height: 100vh;
   width: 40vw;
+  padding-top: 50px;
 }
 
 .display-buttons {
+  background-color: rgb(150, 150, 150);
   display: flex;
   justify-content: space-around;
+  position: fixed;
+  top: 80px;
+  width: 40%;
 }
 
 .display-buttons input {
@@ -56,10 +65,10 @@ body {
 }
 
 .item {
+  font-family: serif;
   width: 500px;
   margin: 5px;
   color: #fff;
-  margin-left: 50px;
 }
 
 .mission-statement {
@@ -67,4 +76,5 @@ body {
   color: white;
   width: 500px;
   margin-left: 50px;
+  margin-top: 10px;
 }
