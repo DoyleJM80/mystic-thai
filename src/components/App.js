@@ -42,8 +42,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <BaseLayout>
-        </BaseLayout>
+        
         <div className="item-display">
           <div className="display-buttons">
             <input value="Appetizers" type="button" onClick={this.handleSelect} />

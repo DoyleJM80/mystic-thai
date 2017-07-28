@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default class Footer extends Component {
   constructor() {
@@ -6,7 +7,7 @@ export default class Footer extends Component {
   }
   render() {
     return (
-      <footer>Footer</footer>
+      <div className="footer"><NavLink to="/contact">Contact</NavLink></div>
     )
-  }  
+  }
 }

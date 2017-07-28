@@ -43,7 +43,7 @@ body {
   background-color: rgba(123, 123, 123, 0.7);
   min-height: 100vh;
   width: 40vw;
-  padding-top: 50px;
+  padding-top: 80px;
 }
 
 .display-buttons {
@@ -71,10 +71,26 @@ body {
   color: #fff;
 }
 
+.item p {
+  font-size: 20px;
+}
+
 .mission-statement {
   font-family: cursive;
   color: white;
   width: 500px;
   margin-left: 50px;
   margin-top: 10px;
+}
+
+.footer {
+  background-color: #fff;
+  height: 40px;
+  padding-top: 5px;
+}
+
+.footer a {
+  color: rgb(150, 150, 150);
+  font-size: 20px;
+  margin-left: 10px;
 }
