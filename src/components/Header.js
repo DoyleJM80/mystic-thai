@@ -9,7 +9,7 @@ export default class Header extends Component {
     return (
       <nav className='banner fixed-top'>
         <NavLink exact to="/"><div className="img-container"></div></NavLink>
-        <NavLink to="/order" className="place-order">Place Order</NavLink>
+        <NavLink to="/order" className="place-order">Check Out</NavLink>
       </nav>
     );
   }

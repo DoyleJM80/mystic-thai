@@ -29,15 +29,13 @@ class App extends Component {
     fetch('http://tiny-lasagna-server.herokuapp.com/collections/reactthaimenu').then((result) => {
       result.json().then((response) => {
         this.setState({menuItems: response[0]});
-        console.log('log1', this.state.menuItems);
       });
     });
   }
 
   render() {
-    console.log('log2', this.state.menuItems);
     let categories = this.state.menuItems[this.state.category].map((category) => {
-      return (<Categories key={category.dish} category={category}/>,<Order key={category.dish} category={category}/>)
+      return <Categories key={category.dish} category={category}/>
     });
 
     return (
