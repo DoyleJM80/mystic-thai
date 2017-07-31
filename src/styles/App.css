@@ -108,3 +108,7 @@ body {
 .submit-button {
   width: 120px;
 }
+
+.hover:hover {
+  color: black;
+}

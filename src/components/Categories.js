@@ -9,9 +9,10 @@ export default class Categories extends Component {
     }
     this.properRound = this.properRound.bind(this);
     this.handleOrder = this.handleOrder.bind(this);
-
   }
 
+
+  //Rounds decimal numbers to 2 indexes after decimal
   properRound = (amount) => {
     if (amount == undefined)
     {
@@ -22,13 +23,16 @@ export default class Categories extends Component {
     }
   };
 
+
+  // pushes item ordered into array and sets state
   handleOrder = (event, orderItem) => {
-    this.state.order.push(orderItem);
+    event.preventDefault();
+    let items = this.state.order;
+    items.push(orderItem);
+    this.setState({ order: items });
     this.state.total += this.properRound(orderItem.price);
-    this.setState({order: this.state.order, total: Number(this.state.total.toFixed(2))});
-    console.log('length', this.state.order.length);
-    console.log('item', orderItem.dish);
-    console.log('price', this.state.total);
+    console.log('items', items);
+    console.log('total', this.state.total);
   }
 
   render() {
@@ -39,12 +43,8 @@ export default class Categories extends Component {
           <h2>{category.dish}</h2>
           <p>{category.description}</p>
           <h3>Price: {category.price}</h3>
-          <button onClick={(event) => this.handleOrder(event, category)}>Add to Order</button>
+          <button onClick={(event) => this.props.handleOrder(event, category)}>Add to Order</button>
           <hr />
-        </div>
-        <div>
-          <h1>{this.state.order.dish}</h1>
-          <h1>{this.state.total}</h1>
         </div>
       </div>
 
