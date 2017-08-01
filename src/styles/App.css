@@ -54,7 +54,7 @@ body {
   width: 40%;
 }
 
-.display-buttons input {
+.display-buttons input, .display-buttons button {
   background-color: rgba(0, 0, 0, 0.0);
   outline: none;
   border: none;
@@ -143,4 +143,8 @@ body {
 .display-total {
   text-align: right;
   margin-right: 10px;
+}
+
+.place-order-button {
+  margin-top: 10px;
 }

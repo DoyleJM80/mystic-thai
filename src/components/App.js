@@ -20,12 +20,15 @@ class App extends Component {
       category: 'Appetizers',
       missionStatement: true,
       displayOrder: false,
+      displayForm: false,
       order: [],
       total: 0.00
     };
     this.handleSelect = this.handleSelect.bind(this);
     this.handleOrder = this.handleOrder.bind(this);
     this.submitOrder = this.submitOrder.bind(this);
+    this.total = this.total.bind(this);
+    this.displayForm = this.displayForm.bind(this);
   }
 
 
@@ -35,10 +38,37 @@ class App extends Component {
       this.setState({displayOrder: true, missionStatement: false});
       console.log("order");
     } else {
-      this.setState({ category: event.target.value, missionStatement: false, displayOrder: false });
+      this.setState({ category: event.target.value, missionStatement: false, displayOrder: false, displayForm: false });
       console.log("menu");
     };
-  }
+  };
+
+  total(event) {
+    return (
+      <div className="display-total">
+        <hr/><span className="total">Total: { this.state.total.toFixed([2]) }</span><br/>
+        <button className="btn total-button" onClick={this.displayForm}>Check Out</button>
+      </div>
+    );
+  };
+
+  displayForm(event) {
+    this.setState({displayForm: true});
+    return (
+      <div>
+        <form className="container form-group" onSubmit={this.submitOrder}>
+          <label>First Name</label>
+          <input className="form-control" name="firstName" type="text"/>
+          <label>Last Name</label>
+          <input className="form-control" name="lastName" type="text"/>
+          <label>Address</label>
+          <input className="form-control" name="address" type="text"/>
+          <button className="btn total-button right place-order-button" type="submit">Place Order</button>
+        </form>
+
+      </div>
+    );
+  };
 
   componentDidMount() {
     fetch('http://tiny-lasagna-server.herokuapp.com/collections/reactthaimenu').then((result) => {
@@ -56,16 +86,17 @@ class App extends Component {
     this.state.total += this.properRound(orderItem.price);
     console.log('order', this.state.order);
     console.log('total', this.state.total);
-  }
+  };
 
   submitOrder(event) {
+    event.preventDefault();
     let object = {
       order: this.state.order,
-      total: this.state.total
-    }
-    console.log("submit fired", this.state.order);
-
-
+      total: this.state.total,
+      firstName: event.target.firstName.value,
+      lastName: event.target.lastName.value,
+      address: event.target.address.value
+    };
 
     fetch('http://tiny-lasagna-server.herokuapp.com/collections/reactthaimenuDoyle', {
       method: "POST",
@@ -79,9 +110,11 @@ class App extends Component {
     });
     this.setState({
       order: [],
-      total: 0.00
-    })
-  }
+      total: 0.00,
+      displayForm: false
+    });
+
+  };
 
   properRound = (amount) => {
     if (amount == undefined)
@@ -117,13 +150,8 @@ class App extends Component {
             <button className= "hover" value="Order" type="button" onClick={this.handleSelect}>order: {this.state.order.length}</button>
           </div>
           <h1 className="mission-statement">{ this.state.missionStatement ? missionStatement : display }</h1>
-          { this.state.displayOrder ?
-            <div className="display-total">
-              <hr/><span className="total">Total: { this.state.total.toFixed([2]) }</span><br/>
-              <button className="btn total-button" onClick={this.submitOrder}>Place Order</button>
-            </div>
-            : null
-          }
+          { this.state.displayOrder ? this.total() : null }
+          { this.state.displayForm ? this.displayForm() : null }
         </div>
       </div>
     );
