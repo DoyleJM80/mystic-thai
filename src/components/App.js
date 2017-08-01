@@ -25,6 +25,7 @@ class App extends Component {
     };
     this.handleSelect = this.handleSelect.bind(this);
     this.handleOrder = this.handleOrder.bind(this);
+    this.submitOrder = this.submitOrder.bind(this);
   }
 
 
@@ -58,7 +59,28 @@ class App extends Component {
   }
 
   submitOrder(event) {
-    fetch('http://tiny-lasagna-server.herokuapp.com/collections/reactthaimenuDoyle')
+    let object = {
+      order: this.state.order,
+      total: this.state.total
+    }
+    console.log("submit fired", this.state.order);
+
+
+
+    fetch('http://tiny-lasagna-server.herokuapp.com/collections/reactthaimenuDoyle', {
+      method: "POST",
+      body: JSON.stringify(object),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then((result) => {
+      result.json();
+    });
+    this.setState({
+      order: [],
+      total: 0.00
+    })
   }
 
   properRound = (amount) => {
@@ -98,9 +120,8 @@ class App extends Component {
           { this.state.displayOrder ?
             <div className="display-total">
               <hr/><span className="total">Total: { this.state.total.toFixed([2]) }</span><br/>
-              <button className="btn total-button" onClick="">Place Order</button>
+              <button className="btn total-button" onClick={this.submitOrder}>Place Order</button>
             </div>
-
             : null
           }
         </div>
