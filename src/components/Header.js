@@ -7,9 +7,9 @@ export default class Header extends Component {
   }
   render() {
     return (
-      <nav className='banner fixed-top'>
+      <nav className="banner fixed-top">
         <NavLink exact to="/"><div className="img-container"></div></NavLink>
-        <NavLink to="/order" className="place-order">Check Out</NavLink>
+        <h1 className="banner-name">Mystic Thai</h1>
       </nav>
     );
   }

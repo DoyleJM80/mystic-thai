@@ -7,7 +7,7 @@ export default class Footer extends Component {
   }
   render() {
     return (
-      <div className="footer"><NavLink to="/contact">Contact</NavLink></div>
+      <div className="footer fixed-bottom"><NavLink to="/contact">Contact</NavLink></div>
     )
   }
 }

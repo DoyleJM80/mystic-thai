@@ -43,7 +43,7 @@ export default class Categories extends Component {
           <h2>{category.dish}</h2>
           <p>{category.description}</p>
           <h3>Price: {category.price}</h3>
-          <button onClick={(event) => this.props.handleOrder(event, category)}>Add to Order</button>
+          <button className="order-button hover btn" onClick={(event) => this.props.handleOrder(event, category)}>Add to Order</button>
           <hr />
         </div>
       </div>

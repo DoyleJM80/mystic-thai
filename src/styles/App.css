@@ -68,6 +68,7 @@ body {
   width: 500px;
   margin: 5px;
   color: #fff;
+  padding-bottom: 10px;
 }
 
 .item p {
@@ -75,7 +76,8 @@ body {
 }
 
 .mission-statement {
-  font-family: cursive;
+  font-family: fantasy;
+  font-size: 38.5px;
   color: white;
   width: 500px;
   margin-left: 50px;
@@ -111,4 +113,34 @@ body {
 
 .hover:hover {
   color: black;
+}
+
+.order-button {
+  background-color: #fff;
+  color: rgb(150, 150, 150);
+}
+
+.banner-name {
+  color: rgb(150, 150, 150);
+  margin-top: -40px;
+  font-family: fantasy;
+}
+
+.right {
+  float: right;
+}
+
+.total {
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+}
+
+.total-button {
+  background-color: rgba(1, 1, 1, 0.1);
+  color: rgb(255, 255, 255);
+}
+
+.display-total {
+  text-align: right;
+  margin-right: 10px;
 }

@@ -13,10 +13,13 @@ class App extends Component {
       menuItems: {
         Appetizers: [],
         Desserts: [],
-        Entrees: []
+        Entrees: [],
+        Order: []
+
       },
       category: 'Appetizers',
       missionStatement: true,
+      displayOrder: false,
       order: [],
       total: 0.00
     };
@@ -27,7 +30,13 @@ class App extends Component {
 
   // makes mission statement render on page load then sets state based on click event
   handleSelect(event) {
-    this.setState({ category: event.target.value, missionStatement: false })
+    if(event.target.value == "Order") {
+      this.setState({displayOrder: true, missionStatement: false});
+      console.log("order");
+    } else {
+      this.setState({ category: event.target.value, missionStatement: false, displayOrder: false });
+      console.log("menu");
+    };
   }
 
   componentDidMount() {
@@ -48,6 +57,10 @@ class App extends Component {
     console.log('total', this.state.total);
   }
 
+  submitOrder(event) {
+    fetch('http://tiny-lasagna-server.herokuapp.com/collections/reactthaimenuDoyle')
+  }
+
   properRound = (amount) => {
     if (amount == undefined)
     {
@@ -59,9 +72,18 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state.order);
     let categories = this.state.menuItems[this.state.category].map((category) => {
       return <Categories key={category.dish} category={category} handleOrder={ this.handleOrder }/>
     });
+    let finalOrders = this.state.order.map((finalOrder, index) => {
+      return (
+        <div key={ index }>
+          <h3>{finalOrder.dish}: <span className="right">{finalOrder.price}</span></h3>
+        </div>
+      )
+    })
+    let display = this.state.displayOrder ? finalOrders : categories
 
     return (
       <div className="App">
@@ -70,9 +92,17 @@ class App extends Component {
             <input className= "hover" value="Appetizers" type="button" onClick={this.handleSelect} />
             <input className= "hover" value="Entrees" type="button" onClick={this.handleSelect} />
             <input className= "hover" value="Desserts" type="button" onClick={this.handleSelect} />
-            <input className= "hover" value={`Order: ${this.state.order.length}`} type="button" />
+            <button className= "hover" value="Order" type="button" onClick={this.handleSelect}>order: {this.state.order.length}</button>
           </div>
-          <h1 className="mission-statement">{ this.state.missionStatement ? missionStatement : categories }</h1>
+          <h1 className="mission-statement">{ this.state.missionStatement ? missionStatement : display }</h1>
+          { this.state.displayOrder ?
+            <div className="display-total">
+              <hr/><span className="total">Total: { this.state.total.toFixed([2]) }</span><br/>
+              <button className="btn total-button" onClick="">Place Order</button>
+            </div>
+
+            : null
+          }
         </div>
       </div>
     );
