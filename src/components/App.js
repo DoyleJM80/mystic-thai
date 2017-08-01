@@ -126,6 +126,10 @@ class App extends Component {
     }
   };
 
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  };
+
   render() {
     console.log(this.state.order);
     let categories = this.state.menuItems[this.state.category].map((category) => {
@@ -149,7 +153,9 @@ class App extends Component {
             <input className= "hover" value="Desserts" type="button" onClick={this.handleSelect} />
             <button className= "hover" value="Order" type="button" onClick={this.handleSelect}>order: {this.state.order.length}</button>
           </div>
-          <h1 className="mission-statement">{ this.state.missionStatement ? missionStatement : display }</h1>
+          <div className="mission-statement">
+            { this.state.missionStatement ? missionStatement : display }
+          </div>
           { this.state.displayOrder ? this.total() : null }
           { this.state.displayForm ? this.displayForm() : null }
         </div>

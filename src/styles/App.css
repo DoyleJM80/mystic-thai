@@ -77,7 +77,7 @@ body {
 
 .mission-statement {
   font-family: fantasy;
-  font-size: 38.5px;
+  font-size: 32px;
   color: white;
   width: 500px;
   margin-left: 50px;
@@ -147,4 +147,9 @@ body {
 
 .place-order-button {
   margin-top: 10px;
+}
+
+label {
+  color: #fff;
+  margin-bottom: -5px;
 }
