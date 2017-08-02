@@ -96,10 +96,15 @@ body {
   margin-left: 10px;
 }
 
-.form-container, .contact-container {
+.contact-container {
+  font-family: fantasy;
   min-height: 88vh;
-  width: 100vh;
-  padding-top: 100px;
+  width: 33vw;
+  padding-top: 60px;
+  margin: 0 auto;
+  padding-left: 50px;
+  background-color: rgba(150, 150, 150, 0.5);
+  color: #fff;
 }
 
 .flex {
