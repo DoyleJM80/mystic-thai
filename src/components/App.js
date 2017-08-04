@@ -47,13 +47,12 @@ class App extends Component {
     return (
       <div className="display-total">
         <hr/><span className="total">Total: { this.state.total.toFixed([2]) }</span><br/>
-        <button className="btn total-button" onClick={this.displayForm}>Check Out</button>
+        <button className="btn total-button" onClick={() => {this.setState({displayForm: true})}}>Check Out</button>
       </div>
     );
   };
 
   displayForm(event) {
-    this.setState({displayForm: true});
     return (
       <div>
         <form className="container form-group" onSubmit={this.submitOrder}>
@@ -65,7 +64,6 @@ class App extends Component {
           <input className="form-control" name="address" type="text"/>
           <button className="btn total-button right place-order-button" type="submit">Place Order</button>
         </form>
-
       </div>
     );
   };
